@@ -102,15 +102,18 @@ class BinarySearchTree {
     let node = this.root; 
 
     while(true) {
+      if(!node) return; 
+
       if(node.val === val) {
-        return node
+        return node;
       }else if(node.val < val) {
-        node = node.right 
+        node = node.right;
 
       } else  {
-        node = node.left
+        node = node.left;
       }
-  }
+
+    }
 }
 
  
@@ -118,7 +121,7 @@ class BinarySearchTree {
    * return the node, if found; else undefined. Uses recursion. */
 
   findRecursively(val, node = this.root) {
-    if(!this.root) return 
+    if(!node) return 
 
     if(node.val === val) {
       return node; 
@@ -291,19 +294,16 @@ class BinarySearchTree {
     let visitedNode = [];
 
     queue.push(node);
-    // console.log("queue**:", queue)
+
     // * pushing the node into the queue
 
     while (queue.length) {
-      // console.log("queue:", queue)
-      // console.log("queue[0]", queue[0])
-      // console.log("queue[1]", queue[1])
-      // console.log("queue[2]", queue[2])
       // *while queue has length... 
       node = queue.shift();
       // * node = the first node in queue 
       visitedNode.push(node.val);
       // * pushing the value of node into the visitedNode array 
+      // *ultimately this is going to determine the order of the queue and will continue to build up until there are no left or no right nodes. 
       if (node.left) {
         queue.push(node.left);
       }
@@ -396,7 +396,7 @@ class BinarySearchTree {
 // binarySearchTree.insert(20)
 // binarySearchTree.insert(10)
 // binarySearchTree.insert(12);
-// let foundNode = binarySearchTree.find(20);
+// let foundNode = binarySearchTree.find(120);
 // let answer = foundNode.val // 20
 // console.log("answer:", answer)
 // let answer1 = foundNode.left // null
@@ -451,16 +451,16 @@ class BinarySearchTree {
 // let answer = binarySearchTree.dfsPostOrder() // [5, 1, 12, 10, 50, 20, 15]
 // console.log("answer:", answer)
 
-let binarySearchTree = new BinarySearchTree();
-binarySearchTree.insert(15)
-binarySearchTree.insert(20)
-binarySearchTree.insert(10)
-binarySearchTree.insert(12)
-binarySearchTree.insert(1)
-binarySearchTree.insert(5)
-binarySearchTree.insert(50);
-let answer = binarySearchTree.bfs() // [15, 10, 20, 1, 12, 50, 5]
-console.log("answer:", answer)
+// let binarySearchTree = new BinarySearchTree();
+// binarySearchTree.insert(15)
+// binarySearchTree.insert(20)
+// binarySearchTree.insert(10)
+// binarySearchTree.insert(12)
+// binarySearchTree.insert(1)
+// binarySearchTree.insert(5)
+// binarySearchTree.insert(50);
+// let answer = binarySearchTree.bfs() // [15, 10, 20, 1, 12, 50, 5]
+// console.log("answer:", answer)
 
 
 module.exports = BinarySearchTree;
